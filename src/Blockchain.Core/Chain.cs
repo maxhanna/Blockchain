@@ -30,7 +30,7 @@ namespace Blockchain.Core
         private readonly int _difficulty;
         private readonly FileStorage _storage;
         public List<Block> Chain { get; private set; }
-        List<string>? Peers { get; set; }
+        public List<string>? Peers { get; set; }
         public List<string> CurrentTransactions { get; } = new();
 
         public Blockchain(int difficulty = 4, FileStorage storage = null)
