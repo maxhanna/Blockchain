@@ -16,6 +16,11 @@ namespace NodeCLI
             var app = builder.Build();
 
             app.MapGet("/chain", () => bc.Chain);
+            app.MapGet("/balance/{address}", (string address) =>
+            {
+                var balance = bc.GetBalance(address);
+                return Results.Ok(new { Address = address, Balance = balance });
+            });
             app.MapPost("/blocks", (Block block) =>
             {
                 if (!bc.ValidChain(bc.Chain.Append(block))) return Results.BadRequest();
@@ -23,16 +28,18 @@ namespace NodeCLI
                 return Results.Ok();
             });
 
+
             if (args.Length > 0 && args[0] == "start")
             {
-                Console.WriteLine("Starting node on http://localhost:5000");
-                app.Run("http://localhost:5000");
+                Console.WriteLine("Starting node on http://localhost:52345");
+                app.Run("http://localhost:52345");
             }
             else
             {
                 foreach (var block in bc.Chain)
                     Console.WriteLine(JsonConvert.SerializeObject(block, Formatting.Indented));
             }
+            bc.ConnectPeer("http://142.112.110.151:52345"); 
         }
     }
 }

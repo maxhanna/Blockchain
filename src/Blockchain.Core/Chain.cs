@@ -30,6 +30,7 @@ namespace Blockchain.Core
         private readonly int _difficulty;
         private readonly FileStorage _storage;
         public List<Block> Chain { get; private set; }
+        List<string>? Peers { get; set; }
         public List<string> CurrentTransactions { get; } = new();
 
         public Blockchain(int difficulty = 4, FileStorage storage = null)
@@ -53,8 +54,31 @@ namespace Blockchain.Core
             Chain.Add(genesis);
             _storage.Save(Chain);
         }
+        public void ConnectPeer(string peerUrl)
+        {
+            if (Peers == null)
+            {
+                Peers = new List<String>();
+            }
+            if (!Peers.Contains(peerUrl))
+                Peers.Add(peerUrl);
+        }
 
         public void AddTransaction(string tx) => CurrentTransactions.Add(tx);
+        public decimal GetBalance(string address)
+        {
+            decimal balance = 0;
+            foreach (var block in Chain)
+            {
+                foreach (var txJson in block.Transactions)
+                {
+                    var tx = JsonConvert.DeserializeObject<Transaction>(txJson)!;
+                    if (tx.ToAddress == address) balance += tx.Amount;
+                    if (tx.FromAddress == address) balance -= tx.Amount;
+                }
+            }
+            return balance;
+        }
         public Block LastBlock() => Chain.Last();
 
         public Block MineBlock()
