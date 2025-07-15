@@ -39,7 +39,10 @@ namespace NodeCLI
                 foreach (var block in bc.Chain)
                     Console.WriteLine(JsonConvert.SerializeObject(block, Formatting.Indented));
             }
-            bc.ConnectPeer("http://142.112.110.151:52345"); 
+            var peerStorage = new PeerStorage();
+            bc.Peers = peerStorage.Load();      // load saved peers
+            bc.ConnectPeer("http://142.112.110.151:52345");
+            peerStorage.Save(bc.Peers);
         }
     }
 }
