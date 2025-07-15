@@ -1,0 +1,13 @@
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.AssemblyInfoInputs.cache
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.AssemblyInfo.cs
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.csproj.CoreCompileInputs.cache
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.sourcelink.json
+C:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.csproj.AssemblyReference.cache
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\bin\Debug\net9.0\Blockchain.Core.deps.json
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\bin\Debug\net9.0\Blockchain.Core.dll
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\bin\Debug\net9.0\Blockchain.Core.pdb
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.dll
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\refint\Blockchain.Core.dll
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\Blockchain.Core.pdb
+c:\Users\Saint\Desktop\YarnBlockchain\src\Blockchain.Core\obj\Debug\net9.0\ref\Blockchain.Core.dll
