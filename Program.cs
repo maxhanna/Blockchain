@@ -13,7 +13,8 @@ namespace Yarn
             var node = new P2PNode(bc, port);
 
             // Default bootstrap peer: localhost on static port
-            node.AddPeer($"127.0.0.1:{port}");
+            node.AddPeer($"142.112.110.151:{DefaultPort}");
+
             // Additional peers from args
             foreach (var a in args) if (a.Contains(':')) node.AddPeer(a);
 
