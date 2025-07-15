@@ -14,7 +14,7 @@ namespace Blockchain.Core
         public List<string> Transactions { get; set; }
         public string PreviousHash { get; set; }
         public int Nonce { get; set; }
-        public string Hash => ComputeHash();
+        public string Hash => Pow.ComputeBlockHash(this);
 
         private string ComputeHash()
         {

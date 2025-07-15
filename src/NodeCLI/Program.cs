@@ -26,7 +26,11 @@ namespace NodeCLI
                 var testChain = bc.Chain.ToList();  
                 testChain.Add(block);
 
-                if (!bc.ValidChain(testChain)) return Results.BadRequest();
+                if (!bc.ValidChain(testChain))
+                {
+                    Console.WriteLine("Rejected block: invalid chain");
+                    return Results.BadRequest();
+                }
                 bc.AddBlock(block);
                 return Results.Ok("Block added and saved");
             });
