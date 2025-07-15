@@ -111,5 +111,17 @@ namespace Blockchain.Core
             }
             return true;
         }
+        /// <summary>
+        /// Replaces the current chain if the incoming chain is valid and longer.
+        /// </summary>
+        public bool ReplaceChain(List<Block> newChain)
+        {
+            // basic validation: newChain is longer and valid
+            if (newChain.Count <= Chain.Count || !ValidChain(newChain))
+                return false;
+
+            Chain = newChain;
+            return true;
+        }
     }
 }

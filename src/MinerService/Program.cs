@@ -25,12 +25,19 @@ namespace MinerService
 
             while (true)
             {
+                var remoteChain = await client.GetFromJsonAsync<List<Block>>("/chain");
+
+                if (remoteChain != null && bc.ReplaceChain(remoteChain))
+                {
+                    Console.WriteLine($"Replaced local chain with remote chain of length {remoteChain.Count}");
+                }
+
                 var block = bc.MineBlock();
                 Console.WriteLine($"Mined block {block.Index} with nonce {block.Nonce}");
                 try
                 {
                     var response = await client.PostAsJsonAsync("/blocks", block);
-                    Console.WriteLine(response.IsSuccessStatusCode ? "Submitted!" : "Rejected");
+                    Console.WriteLine(response.IsSuccessStatusCode ? "Submitted!" : $"Rejected: {await response.Content.ReadAsStringAsync()}");
                 }
                 catch (Exception ex)
                 {
