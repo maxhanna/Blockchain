@@ -31,8 +31,8 @@ namespace NodeCLI
 
             if (args.Length > 0 && args[0] == "start")
             {
-                Console.WriteLine("Starting node on http://localhost:52345");
-                app.Run("http://localhost:52345");
+                Console.WriteLine("Starting node on http://0.0.0.0:52345");
+                app.Run("http://0.0.0.0:52345");
             }
             else
             {
