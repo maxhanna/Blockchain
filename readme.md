@@ -49,7 +49,7 @@ YarnBlockchain/
 ## 🚀 Quick Start (for Beginners)
 
 ### 1. ✅ Install Requirements
-- [.NET 7 SDK or newer](https://dotnet.microsoft.com/download)
+- [.NET 9 SDK or newer](https://dotnet.microsoft.com/download)
 - Visual Studio Code (optional)
 
 ### 2. 📂 Extract and Open
