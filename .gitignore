@@ -1,5 +1,26 @@
-.vs/*
-bin/*
-obj/*
+# General ignores
+*.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+*.swp
+*.pdb
+*.dll
+*.exe
+*.json
 wallet.pem
 chain.json
+
+# .NET Core specific
+/.vs/
+/.vscode/
+/packages/
+artifacts/
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/TestResults/
