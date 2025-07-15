@@ -63,7 +63,20 @@ namespace Blockchain.Core
             if (!Peers.Contains(peerUrl))
                 Peers.Add(peerUrl);
         }
+        public void MineGenesisBlock()
+        {
+            var genesis = new Block
+            {
+                Index = 0,
+                Timestamp = 1710000000,
+                Transactions = new List<string>(),
+                PreviousHash = "0",
+                Nonce = Pow.ComputeProof("0", _difficulty)
+            };
 
+            Chain.Add(genesis);
+            _storage.Save(Chain);
+        }
         public void AddTransaction(string tx) => CurrentTransactions.Add(tx);
         public decimal GetBalance(string address)
         {

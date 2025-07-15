@@ -9,9 +9,45 @@ namespace NodeCLI
 {
     class Program
     {
-        static void Main(string[] args)
+        async static void Main(string[] args)
         {
-            var bc = new Blockchain.Core.Blockchain();
+            var chainFile = "chain.json";
+            var storage = new FileStorage(chainFile);
+ 
+            var bc = new Blockchain.Core.Blockchain(difficulty: 4, storage: storage);
+
+            // attempt to fetch chain from peers
+            var peers = new PeerStorage().Load();
+
+            if (!bc.Chain.Any() && peers.Any())
+            {
+                using var client = new HttpClient();
+
+                foreach (var peer in peers)
+                {
+                    try
+                    {
+                        var remoteChain = await client.GetFromJsonAsync<List<Block>>($"{peer}/chain");
+                        if (remoteChain != null && bc.ReplaceChain(remoteChain))
+                        {
+                            Console.WriteLine($"Imported chain from peer {peer}");
+                            break;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Failed to contact {peer}");
+                    }
+                }
+            }
+
+            // If still no chain, mine genesis
+            if (!bc.Chain.Any())
+            {
+                Console.WriteLine("No chain found on any peer — mining genesis block.");
+                bc.MineGenesisBlock();  
+            }
+            
             var builder = WebApplication.CreateBuilder();
             var app = builder.Build();
 
