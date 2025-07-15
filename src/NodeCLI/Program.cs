@@ -24,8 +24,8 @@ namespace NodeCLI
             app.MapPost("/blocks", (Block block) =>
             {
                 if (!bc.ValidChain(bc.Chain.Append(block))) return Results.BadRequest();
-                bc.Chain.Add(block);
-                return Results.Ok();
+                bc.AddBlock(block);
+                return Results.Ok("Block added and saved");
             });
 
 

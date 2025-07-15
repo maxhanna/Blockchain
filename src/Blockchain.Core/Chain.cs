@@ -112,11 +112,20 @@ namespace Blockchain.Core
             return true;
         }
         /// <summary>
+        /// Adds a block to the chain and immediately saves to disk.
+        /// </summary>
+        public void AddBlock(Block block)
+        {
+            Chain.Add(block);
+            _storage.Save(Chain);    // persist the new chain.json
+        }
+        /// <summary>
         /// Replaces the current chain if the incoming chain is valid and longer.
         /// </summary>
         public bool ReplaceChain(List<Block> newChain)
         {
             // basic validation: newChain is longer and valid
+            Console.WriteLine("Validating chain replacement " + newChain.Count());
             if (newChain.Count <= Chain.Count || !ValidChain(newChain))
                 return false;
 
